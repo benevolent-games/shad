@@ -39,10 +39,10 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/benevolent-games/nubs.git"
+		"url": "git+https://github.com/benevolent-games/shad.git"
 	},
 	"bugs": {
-		"url": "https://github.com/benevolent-games/nubs/issues"
+		"url": "https://github.com/benevolent-games/shad/issues"
 	},
-	"homepage": "https://github.com/benevolent-games/nubs#readme"
+	"homepage": "https://github.com/benevolent-games/shad#readme"
 }
