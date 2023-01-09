@@ -14,9 +14,17 @@
 		"build": "run-s clean && run-p compile importly",
 		"importly": "importly < package-lock.json > x/importmap.json",
 		"clean": "rimraf x && mkdirp x",
-		"dev": "run-p start watch",
-		"compile": "tsc",
-		"watch": "tsc -w",
+		"links": "run-s link-s link-modules",
+		"link-s": "ln -s $(realpath s) x/s",
+		"link-modules": "ln -s $(realpath node_modules) x/node_modules",
+		"compile": "run-p links sass && run-s typescript web",
+		"typescript": "tsc",
+		"sass": "sass s/web/templates/:x/",
+		"web": "node x/web/build.js",
+		"watch-sass": "npm run sass -s -- --watch",
+		"watch-typescript": "tsc -w",
+		"watch": "run-p watch-sass watch-typescript watch-web",
+		"watch-web": "chokidar \"x/web/**/*\" -c \"npm run web -s && echo 'rebuilt web'\"",
 		"http": "http-server",
 		"start": "run-p http watch",
 		"test": "exit 0"
@@ -25,7 +33,8 @@
 		"@babylonjs/core": "^5.30.0",
 		"@babylonjs/loaders": "^5.30.0",
 		"@chasemoskal/magical": "^0.0.1",
-		"es-module-shims": "^1.6.2"
+		"es-module-shims": "^1.6.2",
+		"xiome": "^0.0.33"
 	},
 	"devDependencies": {
 		"http-server": "^14.1.1",
