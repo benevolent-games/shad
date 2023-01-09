@@ -17,7 +17,8 @@
 		"dev": "run-p start watch",
 		"compile": "tsc",
 		"watch": "tsc -w",
-		"start": "http-server",
+		"http": "http-server",
+		"start": "run-p http watch",
 		"test": "exit 0"
 	},
 	"dependencies": {
